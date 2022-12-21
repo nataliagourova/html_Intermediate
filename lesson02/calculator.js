@@ -1,0 +1,13 @@
+let a = 4;
+let b = 25;
+let c = 8;
+let d = 22;
+let operation1 = a+b/(c*d);
+console.log('op1 =', operation1);
+let operation2 = operation1/25;
+console.log('op2 =', operation2);
+c = a+b;
+console.log('op1 /2 = ',operation1);
+console.log('op2 /2 = ',operation2);
+let operation3 = operation1%a;
+console.log('op3= ', operation3);
