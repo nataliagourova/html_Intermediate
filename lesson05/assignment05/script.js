@@ -1,44 +1,55 @@
-function input() {
-  let operation = prompt("Enter Q to Quit \nEnter W to Withdraw \nEnter D to deposit \nEnter B to view balance").toUpperCase();
-  if (operation ==='W'){
-    return 'W';
-  } else if (operation ==='D'){
-    return 'D';
-  } else if (operation ==='B'){
-    alert('You entered B');
-    return 'B';
-  } else if (operation ==='Q'){
-    alert('You entered Q');
-    return 'Q';
-  } else {
-    prompt ('Invalid entry, please enter Q, W, D or B');
+function operation(){
+  const input = {
+    option: '',
+    amount: 0
   }
-}
-function operation(input){
+  console.log('obj input: '+ input.option+ input.amount);
+  function selection() {
+    let operation = prompt("Enter Q to Quit \nEnter W to Withdraw \nEnter D to deposit \nEnter B to view balance").toUpperCase();
+    if (operation ==='W'){
+      input.option = 'W';
+      input.amount = parseFloat(prompt('Enter the amount to withdraw'));
+      console.log('obj input: '+ input.option+ input.amount);
+      return input;
+    } else if (operation ==='D'){
+      input.option = 'D';
+      input.amount = parseFloat(prompt('Enter the amount to deposit'));
+      console.log('obj input: '+ input.option+ input.amount);
+      return input;
+    } else if (operation ==='B'){
+      input.option = 'B';
+      alert('You requested your balance');
+      return input;
+    } else if (operation ==='Q'){
+      input.option = 'Q';
+      alert('You requested to quit');
+      return input;
+    } else {
+      alert('invalid entry');
+    }
+  }
   let balance = 0;
-  let amount =0;
-  console.log('input: '+ input);
-  while(input!='Q'){
-    switch(input) {
+  console.log('input: '+ input.option);
+  while(input.option!='Q'){
+    switch(input.option) {
       case 'W':
-        amount = parseFloat(prompt('Enter the amount to withdraw'));
-        balance -=amount;
+        balance -=input.amount;
         console.log('new balance: '+ balance);
-        alert('Amount withdrawn: '+ amount);
+        alert('Amount withdrawn: '+ input.amount);
         break;
       case 'D':
-        amount = parseFloat(prompt('Enter the amount to deposit'));
-        balance += amount;
-        console.log("new balance: " + balance)
-        alert('Amount deposited: $'+ amount);
+        balance += input.amount;
+        // console.log("new balance: " + balance)
+        alert('Amount deposited: $'+ input.amount);
         break;
       case 'B':
-        alert('Your balance is: $'+balance);
+        alert('Your balance is: $'+ balance);
         break;
-      default:
-        input = alert('Invalid entry');
+      // default:
+      //   alert('iinvalid entry');
+      //   break;
     }
-    input = prompt('Please enter Q, W, D or B').toUpperCase();
+    selection();
   }
   alert('good-bye');
 }
